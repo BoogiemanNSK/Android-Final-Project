@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">FinalProject</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="created_underlined"><u>Created</u></string>
+    <string name="taken_underlined"><u>Taken</u></string>
+    <string name="created">Created</string>
+    <string name="taken">Taken</string>
+    <string name="search_hint">Search…</string>
+    <string name="user_avatar_desc">User Avatar</string>
+    <string name="challenges_statistics">Challenges Statistics</string>
+    <string name="accepted_label">Accepted</string>
+    <string name="completed_label">Completed</string>
+    <string name="failed_label">Failed</string>
+    <string name="extra_challenge_id">extra_challenge_id</string>
+    <string name="login_hint">Login</string>
+    <string name="password_hint">Password</string>
+    <string name="sign_up_text">Sign Up</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="close_text">Close</string>
 </resources>
