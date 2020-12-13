@@ -34,6 +34,8 @@ class SearchFragment : Fragment() {
                 // TODO Add onClickListener on each challenge -> toViewChallengeActivity
             }
         })
+
+
     }
 
     private fun toViewChallengeActivity(challengeId: Int) {
