@@ -9,7 +9,8 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/fragment_created_challenges"
+        android:id="@+id/fragment_taken_challenges"
+        android:checked="true"
         android:icon="@drawable/challenges"
         android:orderInCategory="2"
         android:title="@string/my_challenges"

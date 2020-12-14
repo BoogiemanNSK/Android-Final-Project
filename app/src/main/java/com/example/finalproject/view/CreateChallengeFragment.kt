@@ -1,12 +1,12 @@
 package com.example.finalproject.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentCreateChallengeBinding
 
@@ -28,7 +28,11 @@ class CreateChallengeFragment : Fragment() {
             container,
             false
         )
+
+        binding.buttonCancelCreate.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         return binding.root
     }
-    
 }

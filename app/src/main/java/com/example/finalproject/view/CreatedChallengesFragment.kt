@@ -31,6 +31,7 @@ class CreatedChallengesFragment : Fragment() {
         )
 
         binding.buttonTakenChallenges.setOnClickListener { onTakenChallengesClick() }
+        binding.buttonCreateNewChallenge.setOnClickListener { onCreateNewChallengeClick() }
 
         return binding.root
     }
@@ -38,6 +39,12 @@ class CreatedChallengesFragment : Fragment() {
     private fun onTakenChallengesClick() {
         val action =
             CreatedChallengesFragmentDirections.actionFragmentCreatedChallengesToFragmentTakenChallenges()
+        findNavController().navigate(action)
+    }
+
+    private fun onCreateNewChallengeClick() {
+        val action =
+            CreatedChallengesFragmentDirections.actionFragmentCreatedChallengesToFragmentCreateChallenge()
         findNavController().navigate(action)
     }
 

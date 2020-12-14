@@ -2,8 +2,6 @@
     <string name="app_name">FinalProject</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="created_underlined"><u>Created</u></string>
-    <string name="taken_underlined"><u>Taken</u></string>
     <string name="created">Created</string>
     <string name="taken">Taken</string>
     <string name="search_hint">Search…</string>
@@ -23,4 +21,5 @@
     <string name="my_challenges">My Challenges</string>
     <string name="profile">Profile</string>
     <string name="create">Create</string>
+    <string name="placeholder">___</string>
 </resources>
