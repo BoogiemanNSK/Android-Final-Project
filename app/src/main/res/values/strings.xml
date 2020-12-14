@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FinalProject</string>
+    <string name="app_name">Challenge It</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="created">Created</string>
@@ -11,11 +11,16 @@
     <string name="completed_label">Completed</string>
     <string name="failed_label">Failed</string>
     <string name="extra_challenge_id">extra_challenge_id</string>
-    <string name="login_hint">Login</string>
+    <string name="nickname_hint">Nickname</string>
+    <string name="email_hint">Email</string>
     <string name="password_hint">Password</string>
+    <string name="confirm_password_hint">Confirm Password</string>
     <string name="sign_up_text">Sign Up</string>
+    <string name="log_in_text">Log In</string>
+    <string name="log_out_text">Log out</string>
     <string name="cancel_text">Cancel</string>
     <string name="close_text">Close</string>
+    <string name="sample_name">Sample Name</string>
 
     <string name="search">Search</string>
     <string name="my_challenges">My Challenges</string>

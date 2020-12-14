@@ -16,6 +16,8 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:contentDescription="@string/user_avatar_desc"
+            android:minWidth="100dp"
+            android:minHeight="100dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
@@ -26,19 +28,30 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@string/placeholder"
+            android:text="@string/sample_name"
             android:textSize="30sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/user_avatar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/user_avatar"
-            app:layout_constraintTop_toTopOf="@+id/user_avatar" />
+            app:layout_constraintStart_toEndOf="@+id/user_avatar" />
+
+        <TextView
+            android:id="@+id/button_log_out"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/log_out_text"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="64dp"
             android:text="@string/challenges_statistics"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"

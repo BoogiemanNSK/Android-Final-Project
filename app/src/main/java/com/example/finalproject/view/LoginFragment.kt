@@ -1,20 +1,18 @@
 package com.example.finalproject.view
 
+//import com.example.finalproject.data.ChallengeApi
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.finalproject.BuildConfig
-import com.example.finalproject.MainActivity
 import com.example.finalproject.R
 import com.example.finalproject.data.ChallengeApi
-//import com.example.finalproject.data.ChallengeApi
 import com.example.finalproject.databinding.FragmentLoginBinding
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -22,6 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class LoginFragment : Fragment() {
 
+    private val args: LoginFragmentArgs by navArgs()
     private lateinit var binding: FragmentLoginBinding
 
     companion object {
@@ -32,7 +31,6 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        Log.d("trtr 2", findNavController().currentBackStackEntry?.destination?.toString() ?: "")
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_login,
@@ -40,11 +38,13 @@ class LoginFragment : Fragment() {
             false
         )
 
-        binding.loginButton.setOnClickListener { onLogin() }
-        binding.signUpButton.setOnClickListener { onSignUp() }
-        binding.googleOauth.setOnClickListener { onGoogleLogin() }
-        binding.facebookOauth.setOnClickListener { onFacebookLogin() }
-        binding.twitterOauth.setOnClickListener { onTwitterLogin() }
+        setLogined(false)
+
+        binding.buttonLogin.setOnClickListener { onLogin() }
+        binding.buttonToSignUpFragment.setOnClickListener { onSignUp() }
+
+        binding.editTextLogin.setText(args.login)
+        binding.editTextPassword.setText(args.password)
 
 //        // TODO Think of moving to another location
 //        createService()
@@ -52,37 +52,29 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
-    private fun onLogin() {
-        // TODO Perform any required checks with backend
-
+    private fun setLogined(flag: Boolean) {
         val sharedPref = activity?.getSharedPreferences("creds", Context.MODE_PRIVATE)
         if (sharedPref != null) {
             with(sharedPref.edit()) {
-                putBoolean("_logined", true)
+                putBoolean("_logined", flag)
                 apply()
             }
         }
+    }
+
+    private fun onLogin() {
+        // TODO Perform any required checks with backend
+
+        setLogined(true)
         val action = LoginFragmentDirections.actionFragmentLoginToFragmentTakenChallenges()
         findNavController().navigate(action)
     }
 
     private fun onSignUp() {
-        // TODO To be implemented
+        val action = LoginFragmentDirections.actionFragmentLoginToFragmentRegistration()
+        findNavController().navigate(action)
     }
 
-    private fun onGoogleLogin() {
-        // TODO To be implemented
-    }
-
-    private fun onFacebookLogin() {
-        // TODO To be implemented
-    }
-
-    private fun onTwitterLogin() {
-        // TODO To be implemented
-    }
-
-    // TODO Maybe move this somewhere else
     private fun createService(): ChallengeApi = Retrofit.Builder()
         .baseUrl(BuildConfig.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
