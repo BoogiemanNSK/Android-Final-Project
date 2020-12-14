@@ -10,38 +10,48 @@ class ChallengeRepository(
 
     fun getAllChallenges() {
         challengeApi.getChallenges()
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribeOn(Schedulers.io())
-        .subscribe ({
-           // TODO Do something with result
-        }, { error ->
-            error.printStackTrace()
-        })
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe({
+                // TODO Do something with result
+            }, { error ->
+                error.printStackTrace()
+            })
     }
 
     fun getMyTakenChallenges() {
         challengeApi.getMyChallenges()
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribeOn(Schedulers.io())
-        .subscribe ({
-           // TODO Do something with result
-        }, { error ->
-            error.printStackTrace()
-        })
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe({
+                // TODO Do something with result
+            }, { error ->
+                error.printStackTrace()
+            })
     }
 
     fun getMyCreatedChallenges() {
-        challengeApi.getChallenges()
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribeOn(Schedulers.io())
-        .subscribe ({
-           // TODO Do something with result
-        }, { error ->
-            error.printStackTrace()
-        })
+        challengeApi.getCreatedChallenges()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe({
+                // TODO Do something with result
+            }, { error ->
+                error.printStackTrace()
+            })
     }
 
-    fun postNewChallenge(name: String, description: String, requirements: String, tags: Array<String>) {
+    fun getTakeChallenge(challengeId: Int) {
+        challengeApi.takeChallenge(challengeId)
+            .execute()
+    }
+
+    fun postNewChallenge(
+        name: String,
+        description: String,
+        requirements: String,
+        tags: Array<String>
+    ) {
         challengeApi.createNewChallenge(
             NewChallengeRequest(
                 name,
