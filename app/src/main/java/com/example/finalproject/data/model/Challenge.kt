@@ -5,15 +5,18 @@ import com.google.gson.annotations.SerializedName
 data class Challenge(
     @SerializedName("id")
     val id: Int?,
-    @SerializedName("title")
-    val title: String,
+    @SerializedName("name")
+    val name: String,
     @SerializedName("description")
     val description: String,
-    @SerializedName("autho")
-    val autho: Int,
-    @SerializedName("rating")
-    val rating: Int,
+    @SerializedName("requirements")
+    val requirements: String,
+    @SerializedName("author")
+    val author: User,
+    @SerializedName("raiting")
+    val raiting: Int,
     @SerializedName("taken")
-    val taken: Int
-    // TODO requirements
+    val taken: Int,
+    @SerializedName("tags")
+    val tags: Array<Tag>
 )
