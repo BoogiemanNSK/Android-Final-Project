@@ -9,7 +9,7 @@
         android:name="com.example.finalproject.view.SearchFragment" />
     <fragment
         android:id="@+id/fragment_created_challenges"
-        android:name="com.example.finalproject.view.CreatedChallengesFragment" >
+        android:name="com.example.finalproject.view.CreatedChallengesFragment">
         <action
             android:id="@+id/action_fragment_created_challenges_to_fragment_taken_challenges"
             app:destination="@id/fragment_taken_challenges" />
@@ -19,17 +19,22 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_taken_challenges"
-        android:name="com.example.finalproject.view.TakenChallengesFragment" >
+        android:name="com.example.finalproject.view.TakenChallengesFragment">
         <action
             android:id="@+id/action_fragment_taken_challenges_to_fragment_created_challenges"
             app:destination="@id/fragment_created_challenges" />
+        <action
+            android:id="@+id/action_fragment_taken_challenges_to_fragment_login"
+            app:destination="@id/fragment_login"
+            app:popUpTo="@id/fragment_taken_challenges"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/fragment_profile"
         android:name="com.example.finalproject.view.ProfileFragment" />
     <fragment
         android:id="@+id/fragment_login"
-        android:name="com.example.finalproject.view.LoginFragment" >
+        android:name="com.example.finalproject.view.LoginFragment">
         <action
             android:id="@+id/action_fragment_login_to_fragment_taken_challenges"
             app:destination="@id/fragment_taken_challenges" />

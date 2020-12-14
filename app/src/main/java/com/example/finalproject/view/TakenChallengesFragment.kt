@@ -1,5 +1,6 @@
 package com.example.finalproject.view
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,11 @@ class TakenChallengesFragment : Fragment() {
         fun newInstance() = CreatedChallengesFragment()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,9 +35,21 @@ class TakenChallengesFragment : Fragment() {
             false
         )
 
+        checkIfLogined()
+
         binding.buttonCreatedChallenges.setOnClickListener { onCreatedChallengesClick() }
 
         return binding.root
+    }
+
+    private fun checkIfLogined() {
+        val sharedPref = activity?.getSharedPreferences("creds", Context.MODE_PRIVATE)
+        val alreadyLogined = sharedPref?.getBoolean("_logined", false) ?: false
+        if (!alreadyLogined) {
+            val action =
+                TakenChallengesFragmentDirections.actionFragmentTakenChallengesToFragmentLogin()
+            findNavController().navigate(action)
+        }
     }
 
     private fun onCreatedChallengesClick() {

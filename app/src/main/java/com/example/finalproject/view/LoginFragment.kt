@@ -1,7 +1,9 @@
 package com.example.finalproject.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +32,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d("trtr 2", findNavController().currentBackStackEntry?.destination?.toString() ?: "")
         binding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_login,
@@ -51,6 +54,14 @@ class LoginFragment : Fragment() {
 
     private fun onLogin() {
         // TODO Perform any required checks with backend
+
+        val sharedPref = activity?.getSharedPreferences("creds", Context.MODE_PRIVATE)
+        if (sharedPref != null) {
+            with(sharedPref.edit()) {
+                putBoolean("_logined", true)
+                apply()
+            }
+        }
         val action = LoginFragmentDirections.actionFragmentLoginToFragmentTakenChallenges()
         findNavController().navigate(action)
     }
