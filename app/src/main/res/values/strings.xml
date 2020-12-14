@@ -18,4 +18,9 @@
     <string name="sign_up_text">Sign Up</string>
     <string name="cancel_text">Cancel</string>
     <string name="close_text">Close</string>
+
+    <string name="search">Search</string>
+    <string name="my_challenges">My Challenges</string>
+    <string name="profile">Profile</string>
+    <string name="create">Create</string>
 </resources>
