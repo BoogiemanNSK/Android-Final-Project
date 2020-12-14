@@ -2,6 +2,7 @@ package com.example.finalproject.view
 
 //import com.example.finalproject.data.ChallengeApi
 import android.content.Context
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import com.example.finalproject.databinding.FragmentLoginBinding
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import kotlin.concurrent.fixedRateTimer
 
 class LoginFragment : Fragment() {
 
@@ -48,6 +50,13 @@ class LoginFragment : Fragment() {
 
 //        // TODO Think of moving to another location
 //        createService()
+
+        fixedRateTimer("logo_login", false, 2 * 1000, 2 * 1000) {
+            activity?.runOnUiThread {
+                val animatedLogo = (binding.logo.drawable) as AnimatedVectorDrawable
+                animatedLogo.start()
+            }
+        }
 
         return binding.root
     }

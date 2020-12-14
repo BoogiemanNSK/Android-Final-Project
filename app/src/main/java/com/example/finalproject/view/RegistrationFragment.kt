@@ -1,5 +1,6 @@
 package com.example.finalproject.view
 
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentRegistrationBinding
+import kotlin.concurrent.fixedRateTimer
 
 class RegistrationFragment : Fragment() {
 
@@ -27,6 +29,13 @@ class RegistrationFragment : Fragment() {
 
         binding.buttonCancelRegistration.setOnClickListener { findNavController().popBackStack() }
         binding.buttonSignup.setOnClickListener { onSignUp() }
+
+        fixedRateTimer("logo_reg", false, 2 * 1000, 2 * 1000) {
+            activity?.runOnUiThread {
+                val animatedLogo = (binding.logo.drawable) as AnimatedVectorDrawable
+                animatedLogo.start()
+            }
+        }
 
         return binding.root
     }
