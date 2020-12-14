@@ -13,29 +13,29 @@ class ChallengeRepository(
 
     fun getAllChallenges(): LiveData<List<Challenge>> {
         return challengeApi.getChallenges()
-                .subscribeOn(Schedulers.io())
-                .map {
-                    val challenges = it.challengesArray.map { a -> a }
-                    MutableLiveData(challenges)
-                }.blockingGet()
+            .subscribeOn(Schedulers.io())
+            .map {
+                val challenges = it.challengesArray.map { a -> a }
+                MutableLiveData(challenges)
+            }.blockingGet()
     }
 
     fun getMyCreatedChallenges(): LiveData<List<Challenge>> {
         return challengeApi.getCreatedChallenges()
-                .subscribeOn(Schedulers.io())
-                .map {
-                    val challenges = it.challengesArray.map { a -> a }
-                    MutableLiveData(challenges)
-                }.blockingGet()
+            .subscribeOn(Schedulers.io())
+            .map {
+                val challenges = it.challengesArray.map { a -> a }
+                MutableLiveData(challenges)
+            }.blockingGet()
     }
 
     fun getMyTakenChallenges(): LiveData<List<MyChallenge>> {
         return challengeApi.getMyChallenges()
-                .subscribeOn(Schedulers.io())
-                .map {
-                    val challenges = it.challengesArray.map { a -> a }
-                    MutableLiveData(challenges)
-                }.blockingGet()
+            .subscribeOn(Schedulers.io())
+            .map {
+                val challenges = it.challengesArray.map { a -> a }
+                MutableLiveData(challenges)
+            }.blockingGet()
     }
 
     fun createNewChallenge(
@@ -58,4 +58,11 @@ class ChallengeRepository(
         challengeApi.takeChallenge(challengeId).execute()
     }
 
+    fun completeChallenge(myChallengeId: Int) {
+        challengeApi.completeChallenge(myChallengeId).execute()
+    }
+
+    fun rejectChallenge(myChallengeId: Int) {
+        challengeApi.rejectChallenge(myChallengeId).execute()
+    }
 }
