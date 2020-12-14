@@ -28,6 +28,12 @@ interface ChallengeApi {
     @GET("challenge/take")
     fun takeChallenge(@Query("challenge") challengeId: Int): Call<okhttp3.Response>
 
+    @GET("challenge/complete")
+    fun completeChallenge(@Query("challenge") challengeId: Int): Call<okhttp3.Response>
+
+    @GET("challenge/reject")
+    fun rejectChallenge(@Query("challenge") challengeId: Int): Call<okhttp3.Response>
+
     // TODO Fill with more requests
 
     companion object Factory {

@@ -27,4 +27,11 @@
     <string name="profile">Profile</string>
     <string name="create">Create</string>
     <string name="placeholder">___</string>
+    <string name="enter_title">Enter title</string>
+    <string name="enter_description">Enter description</string>
+    <string name="enter_requirements">Enter requirements</string>
+    <string name="take">Take</string>
+    <string name="title">Title:</string>
+    <string name="description">Description:</string>
+    <string name="requirements">Requirements:</string>
 </resources>
