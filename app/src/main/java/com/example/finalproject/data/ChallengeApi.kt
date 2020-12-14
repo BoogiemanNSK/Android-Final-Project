@@ -3,6 +3,7 @@ package com.example.finalproject.data
 import com.example.finalproject.BuildConfig
 import com.example.finalproject.data.requests.NewChallengeRequest
 import com.example.finalproject.data.responses.ChallengesResponse
+import com.example.finalproject.data.responses.MyChallengesResponse
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -16,7 +17,7 @@ interface ChallengeApi {
     fun getChallenges(): Single<ChallengesResponse>
 
     @GET("challenge/my")
-    fun getMyChallenges(): Single<ChallengesResponse>
+    fun getMyChallenges(): Single<MyChallengesResponse>
 
     @POST("challenge/new")
     fun createNewChallenge(@Body body: NewChallengeRequest): Call<okhttp3.Response>
