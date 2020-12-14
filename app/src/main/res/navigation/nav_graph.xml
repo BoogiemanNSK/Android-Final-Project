@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_taken_challenges">
+
+    <fragment
+        android:id="@+id/fragment_search"
+        android:name="com.example.finalproject.view.SearchFragment" />
+    <fragment
+        android:id="@+id/fragment_created_challenges"
+        android:name="com.example.finalproject.view.CreatedChallengesFragment" >
+        <action
+            android:id="@+id/action_fragment_created_challenges_to_fragment_taken_challenges"
+            app:destination="@id/fragment_taken_challenges" />
+        <action
+            android:id="@+id/action_fragment_created_challenges_to_fragment_create_challenge"
+            app:destination="@id/fragment_create_challenge" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_taken_challenges"
+        android:name="com.example.finalproject.view.TakenChallengesFragment" >
+        <action
+            android:id="@+id/action_fragment_taken_challenges_to_fragment_created_challenges"
+            app:destination="@id/fragment_created_challenges" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_profile"
+        android:name="com.example.finalproject.view.ProfileFragment" />
+    <fragment
+        android:id="@+id/fragment_login"
+        android:name="com.example.finalproject.view.LoginFragment" >
+        <action
+            android:id="@+id/action_fragment_login_to_fragment_taken_challenges"
+            app:destination="@id/fragment_taken_challenges" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_create_challenge"
+        android:name="com.example.finalproject.view.CreateChallengeFragment" />
+    <fragment
+        android:id="@+id/fragment_view_challenges"
+        android:name="com.example.finalproject.view.ViewChallengeFragment" />
+
+</navigation>
