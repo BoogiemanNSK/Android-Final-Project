@@ -25,11 +25,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField 'String', 'BASE_URL', '\"https://api.petfinder.com/v2/\"' // TODO Change to new api
+            buildConfigField 'String', 'BASE_URL', '\"https://challenges.com/api/v1/\"'
 
         }
         debug {
-            buildConfigField 'String', 'BASE_URL', '\"https://api.petfinder.com/v2/\"' // TODO Change to new api
+            buildConfigField 'String', 'BASE_URL', '\"https://challenges.com/api/v1/\"'
         }
     }
 

@@ -20,9 +20,6 @@ class LoginActivity : AppCompatActivity() {
         google_oauth.setOnClickListener { onGoogleLogin() }
         facebook_oauth.setOnClickListener { onFacebookLogin() }
         twitter_oauth.setOnClickListener { onTwitterLogin() }
-
-        // TODO Think of moving to another location
-        createService()
     }
 
     private fun onLogin() {
@@ -47,13 +44,5 @@ class LoginActivity : AppCompatActivity() {
     private fun onTwitterLogin() {
         // TODO To be implemented
     }
-
-    // TODO Maybe move this somewhere else
-    private fun createService(): ChallengeApi = Retrofit.Builder()
-        .baseUrl(BuildConfig.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .build()
-        .create(ChallengeApi::class.java)
 
 }
