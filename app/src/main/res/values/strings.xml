@@ -34,4 +34,7 @@
     <string name="title">Title:</string>
     <string name="description">Description:</string>
     <string name="requirements">Requirements:</string>
+    <string name="login_error">Authorization Error</string>
+
+    <string name="token_key">token</string>
 </resources>
