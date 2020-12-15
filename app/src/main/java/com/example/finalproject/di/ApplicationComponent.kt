@@ -1,8 +1,7 @@
 package com.example.finalproject.di
 
-import android.app.Activity
+import com.example.finalproject.MainActivity
 import dagger.Component
-import dagger.Module
 import javax.inject.Singleton
 
 
@@ -10,5 +9,5 @@ import javax.inject.Singleton
 @Component(modules = [NetworkModule::class, ApplicationModule::class])
 interface ApplicationComponent {
 
-    fun inject(activity: Activity)
+    fun inject(activity: MainActivity)
 }
