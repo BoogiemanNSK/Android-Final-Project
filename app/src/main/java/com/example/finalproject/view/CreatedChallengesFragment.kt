@@ -6,14 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentCreatedChallengesBinding
+import com.example.finalproject.view.adapters.ChallengeItemAdapter
+import com.example.finalproject.viewmodels.CreatedChallengesViewModel
+import kotlinx.android.synthetic.main.fragment_created_challenges.*
+import javax.inject.Inject
 
 
 class CreatedChallengesFragment : Fragment() {
 
     private lateinit var binding: FragmentCreatedChallengesBinding
+
+    @Inject
+    lateinit var viewModel:CreatedChallengesViewModel
 
     companion object {
         fun newInstance() = CreatedChallengesFragment()
@@ -29,6 +37,14 @@ class CreatedChallengesFragment : Fragment() {
             container,
             false
         )
+
+        val challengeItemAdapter = ChallengeItemAdapter()
+        recyclerView.adapter = challengeItemAdapter
+
+        viewModel.createdChallenges.observe(this.viewLifecycleOwner, Observer { challenges ->
+            challengeItemAdapter.setChallenges(challenges)
+        } )
+
 
         binding.buttonTakenChallenges.setOnClickListener { onTakenChallengesClick() }
         binding.buttonCreateNewChallenge.setOnClickListener { onCreateNewChallengeClick() }
