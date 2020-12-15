@@ -9,10 +9,10 @@ import retrofit2.http.POST
 
 interface AuthorizationService {
 
-    @POST("/user/login")
+    @POST("/login")
     fun login(@Body login: LoginRequest) : Call<TokenResponse>
 
-    @POST("/user/register")
+    @POST("/register")
     fun register(@Body register: RegisterRequest) : Call<TokenResponse>
 
 }

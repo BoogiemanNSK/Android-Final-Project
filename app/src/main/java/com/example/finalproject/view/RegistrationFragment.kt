@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.finalproject.BuildConfig
 import com.example.finalproject.R
 import com.example.finalproject.data.AuthorizationService
 import com.example.finalproject.data.requests.LoginRequest
@@ -18,13 +19,16 @@ import com.example.finalproject.databinding.FragmentRegistrationBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Inject
 import kotlin.concurrent.fixedRateTimer
 
 class RegistrationFragment : Fragment() {
 
-    @Inject
-    lateinit var authorizationService: AuthorizationService
+    //@Inject
+    //lateinit var authorizationService: AuthorizationService
 
     private lateinit var binding: FragmentRegistrationBinding
 
@@ -62,6 +66,13 @@ class RegistrationFragment : Fragment() {
             Toast.makeText(context, R.string.passwords_mismatch, Toast.LENGTH_SHORT).show()
         }
 
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build()
+        val authorizationService = retrofit.create(AuthorizationService::class.java)
+
         authorizationService.register(RegisterRequest(email, login, pass))
             .enqueue(object : Callback<TokenResponse> {
 
@@ -70,7 +81,7 @@ class RegistrationFragment : Fragment() {
                 }
 
                 override fun onResponse(call: Call<TokenResponse>, response: Response<TokenResponse>) {
-                    Toast.makeText(context, R.string.register_success, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, response.message(), Toast.LENGTH_SHORT).show()
                     val action =
                         RegistrationFragmentDirections.actionFragmentRegistrationToFragmentLogin(email, pass)
                     findNavController().navigate(action)
