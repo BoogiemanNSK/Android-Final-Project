@@ -48,7 +48,7 @@ class TakenChallengesFragment : Fragment() {
 
         binding.buttonCreatedChallenges.setOnClickListener { onCreatedChallengesClick() }
         val challengeItemAdapter = ChallengeItemAdapter()
-        recyclerView.adapter = challengeItemAdapter
+        binding.recyclerViewTaken.adapter = challengeItemAdapter
 
         viewModel.takenChallenges.observe(this.viewLifecycleOwner, Observer { challenges ->
             challengeItemAdapter.setMyChallenges(challenges)

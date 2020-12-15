@@ -39,7 +39,7 @@ class CreatedChallengesFragment : Fragment() {
         )
 
         val challengeItemAdapter = ChallengeItemAdapter()
-        recyclerView.adapter = challengeItemAdapter
+        binding.recyclerView.adapter = challengeItemAdapter
 
         viewModel.createdChallenges.observe(this.viewLifecycleOwner, Observer { challenges ->
             challengeItemAdapter.setChallenges(challenges)
