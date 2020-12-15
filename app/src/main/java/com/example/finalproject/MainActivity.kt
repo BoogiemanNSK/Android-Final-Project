@@ -5,10 +5,15 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.example.finalproject.viewmodels.LoginViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var loginViewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,6 +1,5 @@
 package com.example.finalproject.di
 
-import androidx.navigation.Navigator
 import com.example.finalproject.BuildConfig
 import com.example.finalproject.data.AuthorizationService
 import com.example.finalproject.data.ChallengeApi

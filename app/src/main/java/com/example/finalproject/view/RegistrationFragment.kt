@@ -5,14 +5,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.finalproject.R
+import com.example.finalproject.data.AuthorizationService
+import com.example.finalproject.data.requests.LoginRequest
+import com.example.finalproject.data.requests.RegisterRequest
+import com.example.finalproject.data.responses.TokenResponse
 import com.example.finalproject.databinding.FragmentRegistrationBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import javax.inject.Inject
 import kotlin.concurrent.fixedRateTimer
 
 class RegistrationFragment : Fragment() {
+
+    @Inject
+    lateinit var authorizationService: AuthorizationService
 
     private lateinit var binding: FragmentRegistrationBinding
 
@@ -41,20 +53,29 @@ class RegistrationFragment : Fragment() {
     }
 
     private fun onSignUp() {
-
         val login = binding.editTextLogin.text.toString()
         val email = binding.editTextEmail.text.toString()
         val pass = binding.editTextPassword.text.toString()
         val passConfirm = binding.editTextPasswordConfirm.text.toString()
 
         if (pass != passConfirm) {
-            return
+            Toast.makeText(context, R.string.passwords_mismatch, Toast.LENGTH_SHORT).show()
         }
 
-        //        todo: sign up here
+        authorizationService.register(RegisterRequest(email, login, pass))
+            .enqueue(object : Callback<TokenResponse> {
 
-        val action =
-            RegistrationFragmentDirections.actionFragmentRegistrationToFragmentLogin(email, pass)
-        findNavController().navigate(action)
+                override fun onFailure(call: Call<TokenResponse>, t: Throwable) {
+                    Toast.makeText(context, R.string.register_error, Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onResponse(call: Call<TokenResponse>, response: Response<TokenResponse>) {
+                    Toast.makeText(context, R.string.register_success, Toast.LENGTH_SHORT).show()
+                    val action =
+                        RegistrationFragmentDirections.actionFragmentRegistrationToFragmentLogin(email, pass)
+                    findNavController().navigate(action)
+                }
+
+            })
     }
 }
