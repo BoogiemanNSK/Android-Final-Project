@@ -69,6 +69,7 @@ class CreateChallengeFragment : Fragment() {
 
                 override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
                     Toast.makeText(context, "Challenge created", Toast.LENGTH_SHORT).show()
+                    findNavController().popBackStack()
                 }
             })
         }
