@@ -16,7 +16,7 @@ class TakenChallengesViewModel
     val takenChallenges: LiveData<List<MyChallenge>> get() = _takenChallenges
 
     init {
-        _takenChallenges.postValue(
-                repository.getMyTakenChallenges().value ?: emptyList())
+        /*_takenChallenges.postValue(
+                repository.getMyTakenChallenges().value ?: emptyList())*/
     }
 }

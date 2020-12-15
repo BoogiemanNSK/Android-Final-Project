@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
@@ -47,8 +48,7 @@ class SearchFragment : Fragment() {
             false
         )
 
-        val challengeItemAdapter = ChallengeItemAdapter()
-        binding.recyclerViewSearch.adapter = challengeItemAdapter
+        //val challengeItemAdapter = ChallengeItemAdapter()
 
         // viewModel.allChallenges.observe(this.viewLifecycleOwner, Observer { challenges ->
         //    challengeItemAdapter.setChallenges(challenges)
@@ -66,7 +66,8 @@ class SearchFragment : Fragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {result ->
-                    challengeItemAdapter.setChallenges(result.challengesArray.toList())
+                    val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, result.challengesArray)
+                    binding.recyclerViewSearch.adapter = adapter
                 },
                 { error ->
                     Toast.makeText(context, "Request failed", Toast.LENGTH_SHORT).show()

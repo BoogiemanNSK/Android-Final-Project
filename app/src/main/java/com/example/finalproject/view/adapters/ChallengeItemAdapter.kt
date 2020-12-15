@@ -25,9 +25,11 @@ class ChallengeItemAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun setChallenges(list: List<Challenge>){
         this.listOfChallenges = list
+        notifyDataSetChanged()
     }
     fun setMyChallenges(list: List<MyChallenge>){
         this.listOfChallenges = list.map { c -> c.challenge }
+        notifyDataSetChanged()
     }
 
 }

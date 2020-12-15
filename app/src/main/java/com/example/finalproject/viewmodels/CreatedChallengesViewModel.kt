@@ -17,7 +17,7 @@ class CreatedChallengesViewModel
     private val _createdChallenges: MutableLiveData<List<Challenge>> = MutableLiveData()
     val createdChallenges:LiveData<List<Challenge>> get() = _createdChallenges
     init {
-        _createdChallenges.postValue(
-                repository.getMyCreatedChallenges().value?: emptyList())
+        /*_createdChallenges.postValue(
+                repository.getMyCreatedChallenges().value?: emptyList())*/
     }
 }

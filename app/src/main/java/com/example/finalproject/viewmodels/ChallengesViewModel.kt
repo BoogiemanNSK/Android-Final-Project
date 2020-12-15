@@ -15,7 +15,7 @@ class ChallengesViewModel
     private val _allChallenges: MutableLiveData<List<Challenge>> = MutableLiveData()
     val allChallenges: LiveData<List<Challenge>> get() = _allChallenges
     init {
-        _allChallenges.postValue(
-                repository.getAllChallenges("").value?: emptyList())
+        /*_allChallenges.postValue(
+                repository.getAllChallenges("").value?: emptyList())*/
     }
 }
