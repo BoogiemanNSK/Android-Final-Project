@@ -6,12 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentSearchBinding
+import com.example.finalproject.view.adapters.ChallengeItemAdapter
+import com.example.finalproject.viewmodels.ChallengesViewModel
+import kotlinx.android.synthetic.main.fragment_created_challenges.*
+import kotlinx.android.synthetic.main.fragment_search.*
+import javax.inject.Inject
 
 class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
+    @Inject
+    lateinit var viewModel: ChallengesViewModel
 
     companion object {
         fun newInstance() = CreatedChallengesFragment()
@@ -27,6 +35,15 @@ class SearchFragment : Fragment() {
             container,
             false
         )
+
+        val challengeItemAdapter = ChallengeItemAdapter()
+        recycler_view_search.adapter = challengeItemAdapter
+
+        viewModel.allChallenges.observe(this.viewLifecycleOwner, Observer { challenges ->
+            challengeItemAdapter.setChallenges(challenges)
+        } )
+
+
         return binding.root
     }
 
