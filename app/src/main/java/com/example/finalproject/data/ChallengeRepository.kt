@@ -11,8 +11,8 @@ class ChallengeRepository(
     var challengeApi: ChallengeApi
 ) {
 
-    fun getAllChallenges(): LiveData<List<Challenge>> {
-        return challengeApi.getChallenges()
+    fun getAllChallenges(token: String): LiveData<List<Challenge>> {
+        return challengeApi.getChallenges(token)
             .subscribeOn(Schedulers.io())
             .map {
                 val challenges = it.challengesArray.map { a -> a }

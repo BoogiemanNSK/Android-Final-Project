@@ -21,8 +21,8 @@ class TakenChallengesFragment : Fragment() {
 
     private lateinit var binding: FragmentTakenChallengesBinding
 
-    @Inject
-    lateinit var viewModel: TakenChallengesViewModel
+    //@Inject
+    //lateinit var viewModel: TakenChallengesViewModel
 
     companion object {
         fun newInstance() = CreatedChallengesFragment()
@@ -50,9 +50,9 @@ class TakenChallengesFragment : Fragment() {
         val challengeItemAdapter = ChallengeItemAdapter()
         binding.recyclerViewTaken.adapter = challengeItemAdapter
 
-        viewModel.takenChallenges.observe(this.viewLifecycleOwner, Observer { challenges ->
-            challengeItemAdapter.setMyChallenges(challenges)
-        } )
+        //viewModel.takenChallenges.observe(this.viewLifecycleOwner, Observer { challenges ->
+        //    challengeItemAdapter.setMyChallenges(challenges)
+        //} )
 
         return binding.root
     }

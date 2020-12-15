@@ -37,4 +37,7 @@
     <string name="login_error">Authorization Error</string>
 
     <string name="token_key">token</string>
+    <string name="passwords_mismatch">Passwords do not match!</string>
+    <string name="register_error">Registration failed!</string>
+    <string name="register_success">Registration was successful!</string>
 </resources>
