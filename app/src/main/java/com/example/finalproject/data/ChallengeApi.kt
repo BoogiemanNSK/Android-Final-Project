@@ -13,21 +13,21 @@ interface ChallengeApi {
     fun getChallenges(@Header("Authorization") token: String): Single<ChallengesResponse>
 
     @GET("challenge/my")
-    fun getMyChallenges(): Single<MyChallengesResponse>
+    fun getMyChallenges(@Header("Authorization") token: String): Single<MyChallengesResponse>
 
     @GET("challenge/created")
-    fun getCreatedChallenges(): Single<ChallengesResponse>
+    fun getCreatedChallenges(@Header("Authorization") token: String): Single<ChallengesResponse>
 
     @POST("challenge/new")
-    fun createNewChallenge(@Body body: NewChallengeRequest): Call<okhttp3.Response>
+    fun createNewChallenge(@Header("Authorization") token: String, @Body body: NewChallengeRequest): Call<okhttp3.ResponseBody>
 
     @GET("challenge/take")
-    fun takeChallenge(@Query("challenge") challengeId: Int): Call<okhttp3.Response>
+    fun takeChallenge(@Header("Authorization") token: String, @Query("challenge") challengeId: Int): Call<okhttp3.ResponseBody>
 
     @GET("challenge/complete")
-    fun completeChallenge(@Query("challenge") challengeId: Int): Call<okhttp3.Response>
+    fun completeChallenge(@Header("Authorization") token: String, @Query("challenge") challengeId: Int): Call<okhttp3.ResponseBody>
 
     @GET("challenge/reject")
-    fun rejectChallenge(@Query("challenge") challengeId: Int): Call<okhttp3.Response>
+    fun rejectChallenge(@Header("Authorization") token: String, @Query("challenge") challengeId: Int): Call<okhttp3.ResponseBody>
 
 }

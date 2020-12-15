@@ -11,7 +11,7 @@ class ChallengeRepository(
     var challengeApi: ChallengeApi
 ) {
 
-    fun getAllChallenges(token: String): LiveData<List<Challenge>> {
+   /* fun getAllChallenges(token: String): LiveData<List<Challenge>> {
         return challengeApi.getChallenges(token)
             .subscribeOn(Schedulers.io())
             .map {
@@ -64,5 +64,5 @@ class ChallengeRepository(
 
     fun rejectChallenge(myChallengeId: Int) {
         challengeApi.rejectChallenge(myChallengeId).execute()
-    }
+    }*/
 }
