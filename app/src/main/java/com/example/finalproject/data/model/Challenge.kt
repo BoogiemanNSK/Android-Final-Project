@@ -3,20 +3,22 @@ package com.example.finalproject.data.model
 import com.google.gson.annotations.SerializedName
 
 data class Challenge(
-    @SerializedName("id")
+    @SerializedName("Id")
     val id: Int?,
-    @SerializedName("name")
+    @SerializedName("Title")
     val name: String,
-    @SerializedName("description")
+    @SerializedName("Description")
     val description: String,
-    @SerializedName("requirements")
+    @SerializedName("Requirements")
     val requirements: String,
-    @SerializedName("author")
+    @SerializedName("AuthorId")
+    val authorId: Int?,
+    @SerializedName("Author")
     val author: User,
-    @SerializedName("raiting")
+    @SerializedName("Raiting")
     val raiting: Int,
-    @SerializedName("taken")
+    @SerializedName("Taken")
     val taken: Int,
-    @SerializedName("tags")
+    @SerializedName("Tags")
     val tags: Array<Tag>
 )

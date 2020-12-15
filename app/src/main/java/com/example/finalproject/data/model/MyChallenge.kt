@@ -3,20 +3,20 @@ package com.example.finalproject.data.model
 import com.google.gson.annotations.SerializedName
 
 data class MyChallenge(
-    @SerializedName("id")
+    @SerializedName("Id")
     val id: Int?,
-    @SerializedName("challenge")
+    @SerializedName("Challenge")
     val challenge: Challenge,
-    @SerializedName("name")
+    @SerializedName("Name")
     val name: String,
-    @SerializedName("comment")
+    @SerializedName("Comment")
     val comment: String,
     /*@SerializedName("start_date")
     val start_date: Date,*/ // TODO Check this one
-    @SerializedName("final_comment")
+    @SerializedName("Final_comment")
     val final_comment: String,
-    @SerializedName("photo")
+    @SerializedName("Photo")
     val photo: Array<Byte>, // TODO Try something different here maybe??
-    @SerializedName("status")
+    @SerializedName("Status")
     val status: String
 )
