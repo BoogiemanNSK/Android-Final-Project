@@ -44,6 +44,7 @@
                 android:textSize="26sp"
                 app:layout_constraintBottom_toBottomOf="@+id/logo"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/logo"
                 app:layout_constraintTop_toTopOf="@+id/logo" />
 
@@ -100,6 +101,8 @@
                 android:id="@+id/logo"
                 android:layout_width="92dp"
                 android:layout_height="75dp"
+                app:layout_constraintEnd_toStartOf="@+id/textView7"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/logo_anim" />
