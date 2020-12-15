@@ -37,7 +37,7 @@ class SearchFragment : Fragment() {
         )
 
         val challengeItemAdapter = ChallengeItemAdapter()
-        recycler_view_search.adapter = challengeItemAdapter
+        binding.recyclerViewSearch.adapter = challengeItemAdapter
 
         viewModel.allChallenges.observe(this.viewLifecycleOwner, Observer { challenges ->
             challengeItemAdapter.setChallenges(challenges)
