@@ -9,7 +9,7 @@ class ChallengeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
     fun bindView(challengeItem: Challenge){
         itemView.text_view_title.text = challengeItem.name
         itemView.text_view_description.text = challengeItem.description
-        itemView.text_view_author.text = challengeItem.author.firstName
-        itemView.text_view_tags.text = challengeItem.tags.joinToString(separator = ",")
+        //itemView.text_view_author.text = challengeItem.author.firstName
+        //itemView.text_view_tags.text = challengeItem.tags.joinToString(separator = ",")
     }
 }

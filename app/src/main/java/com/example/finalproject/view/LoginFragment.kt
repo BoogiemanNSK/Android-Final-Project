@@ -20,12 +20,14 @@ import com.example.finalproject.data.responses.TokenResponse
 import com.example.finalproject.databinding.FragmentLoginBinding
 import com.example.finalproject.preferences.SharedPreferencesWrapper
 import com.example.finalproject.viewmodels.LoginViewModel
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import kotlin.concurrent.fixedRateTimer
 
@@ -91,8 +93,15 @@ class LoginFragment : Fragment() {
             getString(R.string.token_key)
         )*/
 
+        val okHttpBuilder: OkHttpClient.Builder = OkHttpClient.Builder().apply {
+            connectTimeout(60, TimeUnit.SECONDS)
+            readTimeout(60, TimeUnit.SECONDS)
+            writeTimeout(60, TimeUnit.SECONDS)
+        }
+
         val retrofit = Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
+            .client(okHttpBuilder.build())
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
