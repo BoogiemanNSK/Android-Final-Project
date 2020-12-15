@@ -4,22 +4,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doAfterTextChanged
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import com.example.finalproject.BuildConfig
 import com.example.finalproject.R
+import com.example.finalproject.data.ChallengeApi
+import com.example.finalproject.data.ChallengeRepository
+import com.example.finalproject.data.interceptors.TokenInterceptor
 import com.example.finalproject.databinding.FragmentSearchBinding
 import com.example.finalproject.view.adapters.ChallengeItemAdapter
-import com.example.finalproject.viewmodels.ChallengesViewModel
-import kotlinx.android.synthetic.main.fragment_created_challenges.*
 import kotlinx.android.synthetic.main.fragment_search.*
-import javax.inject.Inject
+import kotlinx.android.synthetic.main.fragment_search.view.*
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class SearchFragment : Fragment() {
 
+    private lateinit var challengeRepository: ChallengeRepository
     private lateinit var binding: FragmentSearchBinding
-    @Inject
-    lateinit var viewModel: ChallengesViewModel
+    //@Inject
+    //lateinit var viewModel: ChallengesViewModel
 
     companion object {
         fun newInstance() = CreatedChallengesFragment()
@@ -39,10 +47,29 @@ class SearchFragment : Fragment() {
         val challengeItemAdapter = ChallengeItemAdapter()
         binding.recyclerViewSearch.adapter = challengeItemAdapter
 
-        viewModel.allChallenges.observe(this.viewLifecycleOwner, Observer { challenges ->
-            challengeItemAdapter.setChallenges(challenges)
-        } )
+       // viewModel.allChallenges.observe(this.viewLifecycleOwner, Observer { challenges ->
+        //    challengeItemAdapter.setChallenges(challenges)
+       // } )
 
+        val client = OkHttpClient.Builder()
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
+            .build()
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build()
+        val api = retrofit.create(ChallengeApi::class.java)
+        challengeRepository = ChallengeRepository(api)
+
+        binding.root.search_edit_text.doAfterTextChanged {
+            val challenges = challengeRepository.getAllChallenges(
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiMTIzNDUxMiIsInVpZCI6MiwiZXhwIjoxNjA4Mjc1NDk5fQ.5kOkYd4blAXSuZaoLCN_9oUbWBtQ0XVBLFW-vh1oSS0"
+            ).value!!
+            challengeItemAdapter.setChallenges(challenges)
+        }
 
         return binding.root
     }

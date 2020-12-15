@@ -10,7 +10,7 @@ import retrofit2.http.*
 interface ChallengeApi {
 
     @GET("challenge/all")
-    fun getChallenges(): Single<ChallengesResponse>
+    fun getChallenges(@Header("Authorization") token: String): Single<ChallengesResponse>
 
     @GET("challenge/my")
     fun getMyChallenges(): Single<MyChallengesResponse>

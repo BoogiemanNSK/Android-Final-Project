@@ -20,8 +20,8 @@ class CreatedChallengesFragment : Fragment() {
 
     private lateinit var binding: FragmentCreatedChallengesBinding
 
-    @Inject
-    lateinit var viewModel:CreatedChallengesViewModel
+    //@Inject
+    //lateinit var viewModel:CreatedChallengesViewModel
 
     companion object {
         fun newInstance() = CreatedChallengesFragment()
@@ -41,9 +41,9 @@ class CreatedChallengesFragment : Fragment() {
         val challengeItemAdapter = ChallengeItemAdapter()
         binding.recyclerView.adapter = challengeItemAdapter
 
-        viewModel.createdChallenges.observe(this.viewLifecycleOwner, Observer { challenges ->
-            challengeItemAdapter.setChallenges(challenges)
-        } )
+        //viewModel.createdChallenges.observe(this.viewLifecycleOwner, Observer { challenges ->
+        //    challengeItemAdapter.setChallenges(challenges)
+        //} )
 
 
         binding.buttonTakenChallenges.setOnClickListener { onTakenChallengesClick() }
