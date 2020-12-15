@@ -1,6 +1,7 @@
 package com.example.finalproject.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,10 @@ import com.example.finalproject.data.requests.NewChallengeRequest
 import com.example.finalproject.databinding.FragmentCreateChallengeBinding
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -55,10 +60,17 @@ class CreateChallengeFragment : Fragment() {
                 body = NewChallengeRequest(
                     name = binding.challengeTitle.text.toString(),
                     description = binding.challengeDescription.text.toString(),
-                    requirements = binding.editTextTextMultiLine2.text.toString(),
-                    tags = emptyArray()
+                    requirements = binding.editTextTextMultiLine2.text.toString()
                 )
-            ).execute()
+            ).enqueue(object : Callback<ResponseBody> {
+                override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                    Toast.makeText(context, "Challenge creation failed", Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
+                    Toast.makeText(context, "Challenge created", Toast.LENGTH_SHORT).show()
+                }
+            })
         }
 
         return binding.root
